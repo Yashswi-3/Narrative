@@ -53,7 +53,7 @@ def find_best_subreddit(query):
     return "all"
 
 # Function to fetch Reddit posts
-def fetch_reddit_posts(query, output_file="C:\Users\yashswi shukla\Desktop\Project\Narrative\Narrative\data\raw_reddit_data\reddit_results.json"):
+def fetch_reddit_posts(query, output_file=r"C:\Users\yashswi shukla\Desktop\Project\Narrative\Narrative\data\raw_reddit_data\reddit_results.json"):
     optimized_query = optimize_query(query)
     best_subreddit = find_best_subreddit(optimized_query)
     print(f"\n🔍 Searching in subreddit: r/{best_subreddit} for '{optimized_query}'\n")
