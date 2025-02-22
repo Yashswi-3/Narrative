@@ -1,0 +1,8 @@
+praw
+requests
+spacy
+torch
+transformers
+beautifulsoup4
+numpy
+scipy
