@@ -84,8 +84,5 @@ Social media should be used to connect people in need. Majority of Indians...
 ## 🤝 Contributing
 Contributions are welcome! Feel free to fork this repository, submit issues, or create pull requests.
 
-## 📜 License
-This project is licensed under the **MIT License**.
-
 ---
 🚀 **Built with Python, NLP, and a passion for extracting insights from discussions!**
