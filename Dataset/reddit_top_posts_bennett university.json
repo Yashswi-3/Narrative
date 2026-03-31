@@ -1,4 +1,4 @@
-[
+uvicorn backend.main:app --reload --port 8000[
     {
         "Title": "Kaitlin Bennett (the Kent State Gun Girl) showed up at Ohio University today and the whole crowd started chanting \u201cshit your pants\u201d and someone brought her a roll of toilet paper. Today progress won",
         "Body/Content": "",

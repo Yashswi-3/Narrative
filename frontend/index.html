@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pulse</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <h1>Pulse</h1>
+        <p>What humans say. What news reports.</p>
+      </div>
+      <div class="health-indicator" id="healthIndicator">
+        <span class="dot dot-red" id="healthDot"></span>
+        <span id="healthText">Loading models...</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel" id="searchSection">
+        <label for="queryInput" class="label">Search Topic</label>
+        <textarea
+          id="queryInput"
+          placeholder="Search any topic..."
+          rows="5"
+        ></textarea>
+
+        <div class="controls-row">
+          <div class="control">
+            <label for="timeFilter">Time range</label>
+            <select id="timeFilter">
+              <option value="day">Day</option>
+              <option value="week" selected>Week</option>
+              <option value="month">Month</option>
+              <option value="year">Year</option>
+              <option value="all">All time</option>
+            </select>
+          </div>
+          <div class="control">
+            <label for="limitSelect">Posts to fetch</label>
+            <select id="limitSelect">
+              <option value="10">10</option>
+              <option value="25" selected>25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
+          </div>
+        </div>
+
+        <button id="searchButton" class="search-button" disabled>Search Pulse</button>
+        <p class="hint">Ctrl + Enter to search</p>
+        <p class="error-message hidden" id="searchError"></p>
+      </section>
+
+      <section class="panel hidden" id="progressSection">
+        <div class="progress-header">
+          <h2>Processing Intelligence Stream...</h2>
+          <button id="cancelButton" class="cancel-button">Cancel</button>
+        </div>
+        <div class="stage-list" id="stageList">
+          <div class="stage-row" data-stage="1">
+            <div class="stage-badge">1</div>
+            <div class="stage-meta">
+              <h3>Query &amp; Discovery</h3>
+              <p class="stage-message">Waiting...</p>
+            </div>
+            <div class="stage-state">waiting</div>
+            <div class="stage-time"></div>
+          </div>
+          <div class="stage-row" data-stage="2">
+            <div class="stage-badge">2</div>
+            <div class="stage-meta">
+              <h3>Fetch &amp; Deduplicate</h3>
+              <p class="stage-message">Waiting...</p>
+            </div>
+            <div class="stage-state">waiting</div>
+            <div class="stage-time"></div>
+          </div>
+          <div class="stage-row" data-stage="3">
+            <div class="stage-badge">3</div>
+            <div class="stage-meta">
+              <h3>NLP Processing</h3>
+              <p class="stage-message">Waiting...</p>
+            </div>
+            <div class="stage-state">waiting</div>
+            <div class="stage-time"></div>
+          </div>
+          <div class="stage-row" data-stage="4">
+            <div class="stage-badge">4</div>
+            <div class="stage-meta">
+              <h3>Summarize &amp; News</h3>
+              <p class="stage-message">Waiting...</p>
+            </div>
+            <div class="stage-state">waiting</div>
+            <div class="stage-time"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel hidden" id="resultsSection">
+        <div class="results-grid">
+          <div class="results-main">
+            <article class="summary-card">
+              <div class="summary-header">
+                <h2 id="resultQuery"></h2>
+                <div class="badge-row" id="summaryBadges"></div>
+              </div>
+
+              <p id="summaryText" class="summary-text"></p>
+
+              <div class="summary-actions">
+                <div>
+                  <button id="copySummaryButton">Copy Summary</button>
+                  <button id="exportJsonButton">Export JSON</button>
+                </div>
+                <p id="resultTimestamp"></p>
+              </div>
+            </article>
+
+            <article class="result-block">
+              <h3>Key Topics</h3>
+              <div id="topicsContainer" class="chip-container"></div>
+            </article>
+
+            <article class="result-block">
+              <h3>Named Entities</h3>
+              <div id="entitiesContainer"></div>
+            </article>
+
+            <article class="result-block">
+              <div class="toggle-row">
+                <h3>Source Discussions</h3>
+                <button id="togglePostsButton" class="toggle-button">Show (0) ▼</button>
+              </div>
+              <div id="topPostsContainer" class="hidden"></div>
+            </article>
+          </div>
+
+          <aside class="news-panel" id="newsPanel">
+            <p class="news-empty">No news headlines yet.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="panel" id="historySection">
+        <div class="history-header">
+          <h2>Previous Searches</h2>
+          <button id="clearHistoryButton" class="clear-history">Clear History</button>
+        </div>
+        <div id="historyList"></div>
+        <p id="historyEmpty" class="empty-state">No previous searches yet.</p>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
